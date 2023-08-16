@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,12 +37,12 @@ void start()
         case '2':
            editcontact();
            break;
-        /*case '3':
+        case '3':
            deletecontact();
            break;
         case '4':
            list();
-           break;*/
+           break;
         case '5':
            search();
            break;
@@ -66,6 +65,8 @@ void addcontact()
         scanf("%s",phonebook[serial_no].ph_number);
         printf("<Contact added successfully>\n\n");
         serial_no++;
+        printf("enter any key")
+        getch()
         start();
 
     }
@@ -93,14 +94,17 @@ void editcontact()
                 break;
         
             }
-        }  
+        }
+            
         if (temp==0)
         {
           printf("contact not found");
         }
+        printf("enter any key")
+        getch()
         start();
     
-    }    
+    }
     
 void search()
 {
@@ -119,10 +123,7 @@ void search()
             printf("Phone number: %s\n",phonebook[i].ph_number);
             temp=1;
             break;
-        
         }
-    }    
-        
         if (temp==0)
         {
             printf("contact not found");
@@ -130,12 +131,67 @@ void search()
         
         
         
-        
+    }
+    printf("enter any key")
+    getch()  
     start();
 }
+
+void list()
+{
+    int i=0;
+    while (i<serial_no);
+    {
+        printf("The list of contacts is %s\n",phonebook[i].name);
+        i++;
+    }
+printf("enter any key")
+getch();
+start();
+}
+
+void delete()
+{
+    int i;
+    int temp=0;
+    char con[35];
+    char namee[35];
+    //char phone[10];
+    printf("write contact name you want to edit");
+    scanf("%s",con);
+        
+    for (i=0;i<serial_no;i++)
+    {
+        if (strcmp(phonebook[i].name,con)==0)
+            {
+            phonebook[i].name='\0'
+            phonebook[i].ph_number='\0'
+            
+            printf("contact deleted successfully");
+            temp=1;
+            break;
+        
+            }
+    }
+    if (temp==0)
+    {
+        printf("contact not found in record");
+    }
+    printf("enter any key");
+    getch();
+    start();
+
+}
+
+
+
+
+
+
 int main() 
 {
 printf("****** welcome to phonebook*****\n");
 start();
 
-} 
+    
+}
