@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,7 +73,7 @@ void addcontact()
 void editcontact()
     {
         int i;
-        int temp=0
+        int temp=0;
         char con[35];
         char namee[35];
         char phone[10];
@@ -88,23 +89,24 @@ void editcontact()
                 printf("enter new mobile number\n");
                 scanf("%s",phonebook[i].ph_number);
                 printf("contact edited successfully");
-                temp=1
+                temp=1;
+                break;
         
             }
-            
+        }  
         if (temp==0)
         {
-          printf("contact not found")
+          printf("contact not found");
         }
         start();
     
-    }
+    }    
     
 void search()
 {
     char con[35];
     int i;
-    int temp=0
+    int temp=0;
     printf("enter the contact name you want to search");
     scanf("%s",con);
   
@@ -115,8 +117,12 @@ void search()
             printf("Contact found:\n");
             printf("Name: %s\n",phonebook[i].name);
             printf("Phone number: %s\n",phonebook[i].ph_number);
-            temp=1
+            temp=1;
+            break;
+        
         }
+    }    
+        
         if (temp==0)
         {
             printf("contact not found");
@@ -124,7 +130,6 @@ void search()
         
         
         
-    }
         
     start();
 }
@@ -133,5 +138,4 @@ int main()
 printf("****** welcome to phonebook*****\n");
 start();
 
-    
-}
+} 
