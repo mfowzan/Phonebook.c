@@ -14,6 +14,8 @@ struct contact
 void addcontact();
 void editcontact();
 void search();
+void list();
+void deletecontact();
 
 struct contact phonebook[100];
 int serial_no=0;
@@ -37,9 +39,9 @@ void start()
         case '2':
            editcontact();
            break;
-        //case '3':
-           //deletecontact();
-           //break;
+        case '3':
+           deletecontact();
+           break;
         case '4':
            list();
            break;
@@ -65,8 +67,8 @@ void addcontact()
         scanf("%s",phonebook[serial_no].ph_number);
         printf("<Contact added successfully>\n\n");
         serial_no++;
-        printf("enter any key")
-        getch()
+        //printf("enter any key");
+        //getch();
         start();
 
     }
@@ -100,8 +102,8 @@ void editcontact()
         {
           printf("contact not found");
         }
-        printf("enter any key")
-        getch()
+        //printf("enter any key");
+        //getch();
         start();
     
     }
@@ -132,8 +134,8 @@ void search()
         
         
     }
-    printf("enter any key")
-    getch()  
+    //printf("enter any key");
+    //getch(); 
     start();
 }
 
@@ -145,45 +147,41 @@ void list()
         printf("The list of contacts is %s\n",phonebook[i].name);
         i++;
     }
-printf("enter any key")
-getch();
+//printf("enter any key");
+//getch();
 start();
 }
 
-void delete()
+void deletecontact()
 {
-    int i;
-    int temp=0;
+    int temp;
     char con[35];
-    char namee[35];
-    //char phone[10];
-    printf("write contact name you want to edit");
-    scanf("%s",con);
-        
-    for (i=0;i<serial_no;i++)
+    int i;
+    printf("Enter the contact name you want to delete: ");
+    scanf("%s", con);
+    for (i = 0; i < serial_no; i++)
     {
-        if (strcmp(phonebook[i].name,con)==0)
+        if (strcmp(phonebook[i].name, con) == 0)
+        {
+            for (int j = i; j < serial_no - 1; j++)
             {
-            phonebook[i].name='\0'
-            phonebook[i].ph_number='\0'
-            
-            printf("contact deleted successfully");
+                strcpy(phonebook[j].name, phonebook[j + 1].name);
+                strcpy(phonebook[j].ph_number, phonebook[j + 1].ph_number);
+            }
+            serial_no--;
+            printf("Contact deleted successfully.\n");
             temp=1;
             break;
-        
-            }
+        }
     }
     if (temp==0)
     {
-        printf("contact not found in record");
+        printf("contact not found");
     }
-    printf("enter any key");
-    getch();
+    //printf("enter any key");
+    //getch();
     start();
-
 }
-
-
 
 
 
@@ -193,5 +191,5 @@ int main()
 printf("****** welcome to phonebook*****\n");
 start();
 
-    
+return 0; 
 }
